@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="ExchangeCalculator">
+<head>
+	<title>Exchange Calculator</title>
+	<!-- <script type="text/javascript" src="libs/angular.min.js"></script> -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script type="text/javascript" src="app/app.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+<body>
+	<h1>Exchange Calculator</h1>
+	<div ng-controller="MainCtrl">
+		<select style="width : 200px;" ng-options="country for country in countryList" ng-model="selectedCountry" ng-change="getExchangeRate()"></select>
+		<p ng-if="selectedCountry"> 1 USD = {{exchangeRate}} {{currency}}</p><br><br>
+		<h2 ng-if="sendAmount">{{sendAmount}} USD <span ng-if="receiveAmount"> = {{receiveAmount}} {{currency}}</span></h2>
+		<form name="calculator" ng-if="selectedCountry">
+	        <table>
+	           <tr>
+           		<td align="center"><input type="button" name="one" value="1" ng-click="editSendAmount('1')"></td>
+           		<td align="center"><input type="button" name="two" value="2" ng-click="editSendAmount('2')"></td>
+	           	<td align="center"><input type="button" name="three" value="3" ng-click="editSendAmount('3')"></td>
+	           </tr>
+	           <tr>
+	           	<td align="center"><input type="button" name="four" value="4" ng-click="editSendAmount('4')"></td>
+	           	<td align="center"><input type="button" name="five" value="5" ng-click="editSendAmount('5')"></td>
+	           	<td align="center"><input type="button" name="six" value="6" ng-click="editSendAmount('6')"></td>
+	           </tr>
+	           <tr>
+        		<td align="center"><input type="button" name="seven" value="7" ng-click="editSendAmount('7')"></td>
+	            <td align="center"><input type="button" name="eight" value="8" ng-click="editSendAmount('8')"></td>
+	            <td align="center"><input type="button" name="nine" value="9" ng-click="editSendAmount('9')"></td>
+	           </tr>
+	           <tr>
+	           	<td align="center"><input type="button" name="decimal" value="." ng-click="editSendAmount('.')" ng-disabled="isDecimalDisabled"></td>
+	           	<td align="center"><input type="button" name="zero" value="0" ng-click="editSendAmount('0')"></td>
+	           	<td align="center"><input type="button" name="backspace" value="<" ng-click="backspace()"></td>
+	           </tr>
+	        </table>
+	        <div class="top-pad">
+	        	<input id="clearBtn" type="button" name="clear" value="Clear" ng-click="clearSendAmount()">
+	        	<input type="button" name="calculate" value="Calculate" ng-click="getReceiveAmount()">
+	        </div>
+		</form>
+	</div>
+</body>
+</html>

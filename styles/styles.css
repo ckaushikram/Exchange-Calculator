@@ -1,0 +1,12 @@
+td input {
+	width: 50px;
+}
+
+div input {
+	width: : 50%;
+}
+
+.top-pad {
+	padding-top: 14px;
+	padding-left: 2px;
+}
